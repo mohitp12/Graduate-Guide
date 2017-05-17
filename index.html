@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Grade Guide</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../src/jquery.jqplot.js"></script>
+<script type="text/javascript" src="../src/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="../src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<link rel="stylesheet" type="text/css" href="../src/jquery.jqplot.css" />
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body id="page1">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+  <img src="images/logo.png" alt="logo" style="width:200px; height:67px; margin-left: 25%; margin-top:20px;"></img><br/><br/>
+    <div class="container">
+      
+      <nav>
+        <ul>
+          <li class="current"><a href="http://graderguide-rutul24591.rhcloud.com/index.html" class="m1">Home Page</a></li>
+          <li><a href="http://graderguide-rutul24591.rhcloud.com/about-us.html" class="m2">About Us</a></li>
+          <li><a href="http://graderguide-rutul24591.rhcloud.com/articles.html" class="m3">Our Articles</a></li>
+          <li><a href="http://graderguide-rutul24591.rhcloud.com/contact-us.html" class="m4">Contact Us</a></li>
+          <li class="last"><a href="http://graderguide-rutul24591.rhcloud.com/login.html" class="m5">Logout</a></li>
+        </ul>
+      </nav>
+
+        <fieldset>
+          <div class="rowElem">
+          
+       
+        </fieldset>
+     
+    </div>
+  </header>
+  <div class="container">
+    <aside>
+      <h3>Categories</h3>
+      <ul class="categories">
+        <li><span><a href="#">Programs</a></span></li>
+        <li><span><a href="http://graderguide-rutul24591.rhcloud.com/student_info.php">Student Info</a></span></li>
+        <li class="last"><span><a href="http://graderguide-rutul24591.rhcloud.com/calender.html">Calendar</a></span></li>
+      </ul>
+    
+        <fieldset>
+          
+        </fieldset>
+      
+
+    </aside>
+    <section id="content">
+      <div id="banner">
+        <h2>Professional <span>Online Education <span>Grading Guide</span></span></h2>
+      </div>
+       
+               <div class="inside">
+                <h2>Progress<span>Overview</span></h2>
+                <form method="post" action="http://graderguide-rutul24591.rhcloud.com/index.php">
+                    <table>
+                        
+                    <tr>
+                            <td> </td>
+                            <td><b>Midterm</b></td>
+                            <td><b>Final</b></td>
+                            <td><b>Homework</b></td>
+                            <td><b>Total</b></td>
+                    </tr>
+                    <tr>
+                            <td><b>Required Grades</b></td>
+                            <td><b>30.0%</b></td>
+                            <td><b>40.0%</b></td>
+                            <td><b>30.0%</b></td>
+                            <td><b>100.0%</b></td>
+                    </tr>
+                    <tr>
+                            <td><b>Enter Current Grades    (in %)</b></td>
+                            <td><input style="text-align:right; width:40px;" maxlength="5" type="text" id="a" name="a" onchange="add()"></td>
+                            <td><input style="text-align:right; width:40px;" maxlength="5" type="text" id="b" name="b" onchange="add()"></td>
+                            <td><input style="text-align:right; width:40px;" maxlength="5" type="text" id="c" name="c" onchange="add()"></td>
+                            <td><p id="total" name="total"></p></td>
+                    </tr>
+                        
+                    </table>
+                        <input type="submit" style="margin-top:10px" value="Show Your Progress Graph">
+                </form>
+        
+        
+       
+    </section>
+        <div id="chart_div" style="margin-left:25%;margin-top:60%;">
+		<script>
+		 google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Things", "Score", { role: "style" } ],
+        ["Midterm", 10, "orange"],
+        ["Homework", 95, "silver"],
+        ["Finals", 90, "Yellow"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+      var options = {
+        title: "Grades for the student",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "40%"},
+        legend: { position: "none" },
+        hAxis: {
+          title: 'Coursework'
+        },
+        vAxis: {
+          title: 'Score'
+        }
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+      chart.draw(view, options);
+  }
+  </script>
+  </div>
+  </div>
+</div>
+<footer style="margin-top:-125px;">
+  <div class="footerlink">
+    <p class="lf">Copyright &copy; 2016 <a href="#">Grade Guide</a> - All Rights Reserved</p>
+	<span id="loadingtime"></span>
+
+        <div style="clear:both;"></div>
+  </div>
+</footer>
+    <script type="text/javascript">
+                                                function add() 
+                                                {
+                                                  
+                                                  var a = document.getElementById("a").value;
+                                                  var b = document.getElementById("b").value;
+                                                  var c = document.getElementById("c").value;
+                                                  
+                                                  var sum = (0.3)*a+(0.4)*b +(0.3)*c;
+                                                  document.getElementById("total").innerHTML = sum;
+                                                }
+    </script>
+<script type="text/javascript"> Cufon.now(); </script>
+
+<!-- END PAGE SOURCE -->
+</body>
+</html>
